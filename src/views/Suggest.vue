@@ -1,20 +1,22 @@
 <template>
   <v-container>
 
-      <v-row align="center" justify="center">
-        <h1 class="h1-display">Please wait while we generate your outfits</h1>
-      </v-row>
-      
-      <v-row align="center" justify="center">
-        <v-progress-circular
-        :size="80"
-        color="black"
-        indeterminate
-        class="mt-12"
-        ></v-progress-circular>
-      </v-row>
+      <div v-if="!showOutfits">
+        <v-row align="center" justify="center">
+            <h1 class="h1-display">Please wait while we generate your outfits</h1>
+        </v-row>
+        
+        <v-row align="center" justify="center">
+            <v-progress-circular
+            :size="80"
+            color="black"
+            indeterminate
+            class="mt-12"
+            ></v-progress-circular>
+        </v-row>
+      </div>
 
-      <v-row justify="flex-start">
+      <v-row v-if="showOutfits" justify="flex-start">
           <v-card class="py-3">
             <v-card
                 class="mx-2"
