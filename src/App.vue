@@ -5,7 +5,7 @@
       color="success"
       dark
     >
-      <v-toolbar-title class="text-h4">MixMatch</v-toolbar-title>
+      <v-toolbar-title class="text-h4" @click="$router.replace({ name: 'Main' })">MixMatch</v-toolbar-title>
 
       <v-spacer></v-spacer>
 

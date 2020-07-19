@@ -14,7 +14,7 @@
         </div>
       </form>
       <!--SUCCESS-->
-      <div v-if="isSuccess">
+      <div v-if="isSuccess" justify="center" align="center">
         <v-row justify="flex-start">
             <v-card
                 class="mx-2"
@@ -46,6 +46,7 @@
                 </v-card-actions>
             </v-card>
         </v-row> 
+        <v-btn class="mt-8 mb-8" @click="$router.replace({ name: 'Suggest' })">Suggest outfits</v-btn>
       </div>
       <!--FAILED-->
       <div v-if="isFailed">
@@ -60,6 +61,7 @@
 
 <script>
   import { upload, wait } from '@/helper.js'; 
+  import { mapState } from 'vuex'
 
   const STATUS_INITIAL = 0, STATUS_SAVING = 1, STATUS_SUCCESS = 2, STATUS_FAILED = 3;
 
@@ -85,7 +87,8 @@
       },
       isFailed() {
         return this.currentStatus === STATUS_FAILED;
-      }
+      },
+      ...mapState(['clothing'])
     },
     methods: {
       reset() {
@@ -102,6 +105,7 @@
           .then(x => {
             this.uploadedFiles = [].concat(x);
             this.currentStatus = STATUS_SUCCESS;
+            this.$store.commit("setClothing", this.uploadedFiles);
           })
           .catch(err => {
             this.uploadError = err.response;
@@ -138,6 +142,7 @@
     min-height: 200px; /* minimum height */
     position: relative;
     cursor: pointer;
+    transition: 0.3s all;
   }
   
   .input-file {
