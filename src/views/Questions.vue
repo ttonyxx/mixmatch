@@ -13,12 +13,12 @@
                       </v-toolbar-title>
                 </v-toolbar>
                 <v-card-text>
-                  <p style="font-size: 18px;">
+                  <p style="font-size: 18px;" v-if="index < clothing.length">
                     We want to understand your clothing preferences, so pick which outfits you'd rather wear!
                     </p>
 
                     <transition name="slide-fade">
-                      <v-row class="mt-5" align="center" justify="space-between" v-if="!clicked">
+                      <v-row class="mt-5" align="center" justify="space-between" v-if="!clicked && index < clothing.length">
                         <v-img
                         height="400px"
                         width="150px"
@@ -36,6 +36,42 @@
                         >
                         </v-img>
                       </v-row>
+                      <v-row v-if="index >= clothing.length" class="px-3">
+                          <v-form
+                            ref="form"
+                          >
+                            <v-text-field
+                              v-model="firstName"
+                              label="First Name"
+                              required
+                            ></v-text-field>
+
+                            <v-text-field
+                              v-model="lastName"
+                              label="Last Name"
+                              required
+                            ></v-text-field>
+
+                            <div class="dropbox mb-6">
+                              Profile picture: 
+                              <input type="file" multiple :name="uploadFieldName" :disabled="isSaving" @change="filesChange($event.target.name, $event.target.files); fileCount = $event.target.files.length"
+                                accept="image/*" class="input-file">
+                                <p v-if="isSaving">
+                                  Uploading {{ fileCount }} files...
+                                </p>
+                            </div>
+
+                            <v-row justify="center" v-if="!isSaving">
+                              <v-btn
+                                @click="preceed()"
+                                color="success"
+                                class="mr-4"
+                              >
+                                Continue
+                              </v-btn>
+                            </v-row>
+                          </v-form>
+                      </v-row>
                     </transition>
                 </v-card-text>
             </v-card>
@@ -45,6 +81,10 @@
 </template>
 
 <script>
+  import { upload, wait } from '@/helper.js'; 
+  import { mapState } from 'vuex'
+
+  const STATUS_INITIAL = 0, STATUS_SAVING = 1, STATUS_SUCCESS = 2, STATUS_FAILED = 3;
 
   export default {
     name: 'Questions',
@@ -61,32 +101,97 @@
           firstLink: "",
           secondLink: "",
           clicked: false,
-          index: 0
+          index: 0,
+          uploadedFiles: [],
+          uploadError: null,
+          currentStatus: null,
+          uploadFieldName: 'photos',
+          firstName: '',
+          lastName: ''
       }
     },
     computed: {
-      
+      isInitial() {
+        return this.currentStatus === STATUS_INITIAL;
+      },
+      isSaving() {
+        return this.currentStatus === STATUS_SAVING;
+      },
+      isSuccess() {
+        return this.currentStatus === STATUS_SUCCESS;
+      },
+      isFailed() {
+        return this.currentStatus === STATUS_FAILED;
+      },
+      ...mapState(['profile'])
     },
     methods: {
+      preceed() {
+        if(this.uploadedFiles.length != 0) {
+          this.$store.commit("setProfile", {
+            image_url: this.uploadedFiles[0].url,
+            first_name: this.firstName,
+            last_name: this.lastName
+          })
+        } else {
+          this.$store.commit("setProfile", {
+            image_url: 'https://freesvg.org/img/abstract-user-flat-4.png',
+            first_name: this.firstName,
+            last_name: this.lastName
+          })
+        }
+        this.$router.replace({ name: 'Profile' })
+      },
       clickedImage() {
         this.clicked = true;
         setTimeout(() => {
-          this.firstLink = this.clothing[this.index++];
-          this.secondLink = this.clothing[this.index++];
+          if(this.index + 1 < this.clothing.length) {
+            this.firstLink = this.clothing[this.index++];
+            this.secondLink = this.clothing[this.index++];
+          } else {
+            this.index = this.clothing.length;
+          }
           this.clicked = false;
         }, 300);
+      },
+      reset() {
+        // reset form to initial state
+        this.currentStatus = STATUS_INITIAL;
+        this.uploadedFiles = [];
+        this.uploadError = null;
+      },
+      save(formData) {
+        // upload data to the server
+        this.currentStatus = STATUS_SAVING;
+        upload(formData)
+          .then(wait(1500)) // DEV ONLY: wait for 1.5s 
+          .then(x => {
+            this.uploadedFiles = [].concat(x);
+            this.currentStatus = STATUS_SUCCESS;
+          })
+          .catch(err => {
+            this.uploadError = err.response;
+            this.currentStatus = STATUS_FAILED;
+          });
+      },
+      filesChange(fieldName, fileList) {
+        // handle file changes
+        const formData = new FormData();
+        if (!fileList.length) return;
+        // append the files to FormData
+        Array
+          .from(Array(fileList.length).keys())
+          .map(x => {
+            formData.append(fieldName, fileList[x], fileList[x].name);
+          });
+        // save it
+        this.save(formData);
       }
     },
     mounted() {
       this.firstLink = this.clothing[this.index++];
       this.secondLink = this.clothing[this.index++];
-    },
-    watch: {
-      index(val) {
-        if(val >= this.clothing.length) {
-          this.$router.replace({ name: 'Profile' })
-        }
-      }
+      this.reset();
     }
   }
 </script>

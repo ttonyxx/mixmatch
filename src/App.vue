@@ -22,7 +22,7 @@
         alt="John"
       >
       </v-avatar>
-      <v-btn @click="$router.replace({ name: 'Questions' })">Sign out</v-btn>
+      <v-btn @click="signOut()">Sign out</v-btn>
       </div>
 
       
@@ -38,6 +38,17 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'App',
+
+  methods: {
+    signOut() {
+      this.$store.commit("setProfile", {
+          image_url: "https://freesvg.org/img/abstract-user-flat-4.png", 
+          first_name: "",
+          last_name: ""
+      })
+      this.$router.replace({ name: 'Questions' })
+    }
+  },
 
   components: {
   },

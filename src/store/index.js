@@ -8,14 +8,17 @@ export default new Vuex.Store({
       clothing: [],
       profile: {
           image_url: "https://i.imgur.com/6jORIPn.jpg",
-          first_name: "Jeff",
-          last_name: "Hawkins"
+          first_name: "Tony",
+          last_name: "Xin"
       }
   },
   mutations: {
       setClothing(state, clothing) {
           state.clothing = clothing
-      }
+      },
+      setProfile(state, profile) {
+        state.profile = profile
+      },
   },
   actions: {
   },
