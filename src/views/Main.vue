@@ -1,24 +1,35 @@
 <template>
   <v-container>
+    <v-card
+    class="mx-auto"
+    tile
+  >
+    <v-container
+      height="100%"
+      style="background-color: var(--secondary-color);"
+    >
      <form class="mb-12" enctype="multipart/form-data" novalidate id="upload-form">
-        <h1>Upload images</h1>
+        <v-row justify="center" align="center" style="width: 100%"><h1 class="mb-3">Add to your closet</h1></v-row>
         <div class="dropbox">
           <input type="file" multiple :name="uploadFieldName" :disabled="isSaving" @change="filesChange($event.target.name, $event.target.files); fileCount = $event.target.files.length"
             accept="image/*" class="input-file">
             <p v-if="!isSaving">
-              Drag your file(s) here to begin<br> or click to browse
+              Take a picture
             </p>
             <p v-if="isSaving">
               Uploading {{ fileCount }} files...
             </p>
         </div>
       </form>
+    </v-container>
+    </v-card>
       <!--SUCCESS-->
+    <v-container>
       <div v-if="isSuccess" justify="center" align="center">
-        <v-row justify="flex-start">
+        <v-row justify="center">
             <v-card
-                class="mx-2"
-                max-width="250"
+                class="mx-2 my-2"
+                max-width="200"
                 v-for="item in uploadedFiles" 
                 v-bind:key="item.id"
             >
@@ -28,20 +39,13 @@
                 :src="item.url"
                 :alt="item.originalName"
                 >
-                <v-card-title>{{ item.originalName }}</v-card-title>
                 </v-img>
                 <v-card-actions class="justify-center">
-                <v-btn
-                    color="warning"
-                    text
-                >
-                    Rename
-                </v-btn>
                 <v-btn
                     color="red"
                     text
                 >
-                    Delete
+                    Remove
                 </v-btn>
                 </v-card-actions>
             </v-card>
@@ -56,6 +60,7 @@
         </p>
         <pre>{{ uploadError }}</pre>
       </div>
+    </v-container>
   </v-container>
 </template>
 

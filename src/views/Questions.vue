@@ -2,16 +2,20 @@
   <v-container>
 
         <v-row align="center" justify="center">
-            <v-card class="elevation-12" style="height: 600px;">
+            <v-card class="elevation-12 mx-5" style="height: 600px;">
                 <v-toolbar
-                    color="success"
-                    dark
+                    color="var(--secondary-color)"
                     flat
                 >
-                    <v-toolbar-title>Clothes preference</v-toolbar-title>
+                    <v-toolbar-title>
+                      <h1>
+                      Clothes preference</h1>
+                      </v-toolbar-title>
                 </v-toolbar>
                 <v-card-text>
+                  <p style="font-size: 18px;">
                     We want to understand your clothing preferences, so pick which outfits you'd rather wear!
+                    </p>
 
                     <transition name="slide-fade">
                       <v-row class="mt-5" align="center" justify="space-between" v-if="!clicked">
@@ -80,7 +84,7 @@
     watch: {
       index(val) {
         if(val >= this.clothing.length) {
-          this.$router.replace({ name: 'Main' })
+          this.$router.replace({ name: 'Profile' })
         }
       }
     }
@@ -107,6 +111,10 @@
 .protrude:hover {
   cursor: pointer;
   transform: scale(1.1);
+}
+
+h1 {
+  font-size: 25px;
 }
   
 </style>

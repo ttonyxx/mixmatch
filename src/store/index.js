@@ -5,7 +5,12 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-      clothing: []
+      clothing: [],
+      profile: {
+          image_url: "https://i.imgur.com/6jORIPn.jpg",
+          first_name: "Jeff",
+          last_name: "Hawkins"
+      }
   },
   mutations: {
       setClothing(state, clothing) {
