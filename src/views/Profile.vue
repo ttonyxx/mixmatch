@@ -88,8 +88,38 @@
         <v-row justify="center">
         <v-btn class="profile-btn mb-3" @click="$router.replace({ name: 'Main' })" color="#DCEDC8">Add clothes</v-btn>
         </v-row>
+
+        
     </v-container>
   </v-card>
+
+  <v-card
+    class="mx-auto"
+    max-width="434"
+    tile
+  >
+    <v-container
+        class="mt-6"
+      height="100%"
+      style="background-color: var(--secondary-color);"
+    >
+
+        <v-row justify="center">
+        <h1 class="section-title">Your outfits</h1>
+        </v-row>
+        <v-row justify="center">
+        <v-btn class="profile-btn mt-3" @click="$router.replace({ name: 'Create' })">Create outfits</v-btn>
+        </v-row>
+        <v-row justify="center" class="mt-3">
+            
+        </v-row> 
+
+        
+    </v-container>
+  </v-card>
+
+          
+
      
   </v-container>
 </template>

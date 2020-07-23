@@ -4,6 +4,7 @@ import Main from '@/views/Main';
 import Questions from '@/views/Questions';
 import Suggest from '@/views/Suggest';
 import Profile from '@/views/Profile';
+import Create from '@/views/Create';
 
 Vue.use(VueRouter)
 //const isProd = process.env.NODE_ENV === 'production'
@@ -28,6 +29,11 @@ const routes = [
     path: '/profile',
     name: 'Profile',
     component: Profile
+  },
+  {
+    path: '/create',
+    name: 'Create',
+    component: Create
   }
 ]
 
