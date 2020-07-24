@@ -71,7 +71,7 @@
          pantsUrl: "",
          shoesUrl: "",
          selected: -1,
-         shirts: ["https://images-na.ssl-images-amazon.com/images/I/51Hh3m%2BTAeL._AC_UX522_.jpg",
+         shirts: ["https://lp2.hm.com/hmgoepprod?set=quality[79],source[/21/4d/214d9765f510970fa8e5b082f120c76503fab1ca.jpg],origin[dam],category[men_hoodiessweatshirts_hoodies],type[DESCRIPTIVESTILLLIFE],res[m],hmver[1]&call=url[file:/product/zoom]&zoom=zoom",
              "https://ae01.alicdn.com/kf/HTB1US_lXx_rK1RkHFqDq6yJAFXai/5XL-Plus-Size-Brand-clothing-Cotton-Mens-Clothing-Solid-Soft-Men-Shirt-Long-Sleeve-Mens-Shirts.jpg_640x640.jpg", 
          "https://images-na.ssl-images-amazon.com/images/I/61god%2B%2BvR-L._AC_UY606_.jpg",
          "https://shop.madeinsantacruz.com/media/Sweatshirts/SC_PrimaryDot_Pullover_White_Front.jpg"],
@@ -79,10 +79,10 @@
              "https://cdn.shopify.com/s/files/1/0023/9901/0881/products/M-Coburn-Pant-Storm-Cloud_5f952c4f-d899-484f-b891-acf4f37f6269_1400x1400.jpg?v=1582657066",
          "https://www.blackdiamondequipment.com/on/demandware.static/-/Sites-bdel/default/dwdfe3d84b/products/F18_Product_Images/Apparel/E5SJ_015_Black_MWinterAlpinePant.jpg",
          "https://www.blackdiamondequipment.com/dw/image/v2/AAKN_PRD/on/demandware.static/-/Sites-bdel/default/dwf77df5be/products/S19_Product_Images/S19_Apparel/750020_0002_Black_MFORGEDDENIMPANTS.jpg?sw=600"],
-         shoes: ["https://s3.amazonaws.com/nikeinc/assets/59282/Converse_Chuck_Taylor_All_Star_70_Embossed_Floral_-_Front_original_hd_1600.JPG?1466984940",
+         shoes: ["https://cdn.shopify.com/s/files/1/2273/2141/products/Roux-White-Tony-Bianco-Casual-Shoe-Front_c4ea1c0a-0df6-4262-857a-848148d3505a.png?v=1549260256",
+             "https://s3.amazonaws.com/nikeinc/assets/59282/Converse_Chuck_Taylor_All_Star_70_Embossed_Floral_-_Front_original_hd_1600.JPG?1466984940",
              "https://www.rogansshoes.com/data/default/images/catalog/385/VN_0D3HY28_XXX1.JPG",
-         "https://www.famousfootwear.com/productimages/shoes_ia71600.jpg?trim.threshold=105&width=630&height=480&paddingWidth=60",
-         "https://cdn.shopify.com/s/files/1/2273/2141/products/Roux-White-Tony-Bianco-Casual-Shoe-Front_c4ea1c0a-0df6-4262-857a-848148d3505a.png?v=1549260256"],
+         "https://www.famousfootwear.com/productimages/shoes_ia71600.jpg?trim.threshold=105&width=630&height=480&paddingWidth=60"],
          selectedClothes: [],
          clothesViewPos: -120
       }
