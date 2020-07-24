@@ -82,7 +82,7 @@
          shoes: ["https://s3.amazonaws.com/nikeinc/assets/59282/Converse_Chuck_Taylor_All_Star_70_Embossed_Floral_-_Front_original_hd_1600.JPG?1466984940",
              "https://www.rogansshoes.com/data/default/images/catalog/385/VN_0D3HY28_XXX1.JPG",
          "https://www.famousfootwear.com/productimages/shoes_ia71600.jpg?trim.threshold=105&width=630&height=480&paddingWidth=60",
-         "https://cdn.shopify.com/s/files/1/2273/2141/products/Roux-White-Tony-Bianco-Casual-Shoe-Front_c4ea1c0a-0df6-4262-857a-848148d3505a.png?v=1549260256"],
+         "https://www.grenson.com/media/catalog/product/cache/2/thumbnail/9df78eab33525d08d6e5fb8d27136e95/s/n/sneaker_22_112431_print_threequarter.jpg"],
          selectedClothes: [],
          clothesViewPos: -120
       }
